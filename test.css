@@ -1,0 +1,79 @@
+:root {
+	color-scheme: light dark;
+	--margin: 20px;
+	--universal-font-family: Arial;
+    --universal-border-radius: 15px;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	color: #000000;
+	margin: 0;
+}
+
+footer {
+	font-size: x-small;
+	margin-left: var(--margin);
+	background-color: crimson;
+}
+
+button {
+	--webkit-appearance: none;
+	appearance: none;
+	border: none;
+	border-radius: var(--universal-border-radius);
+	height: 50px;
+	font-size: x-large;
+	padding: 10px;
+}
+
+.chingus {
+	/* padding: 5px; */
+	/* width: 20%; */
+	background-color: cornflowerblue;
+}
+
+.chingli {
+	/* padding: 5px; */
+	/* width: 10%; */
+	background-color: darkslateblue;
+}
+
+#body-wrapper {
+	top: 0;
+	left: 0;
+	position: absolute;
+	background-color: chartreuse;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#main {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0%;
+	margin-left: 20px;
+	width: 100%;
+	height: 100%;
+	overflow-y: inherit;
+	background-color: chocolate;
+}
+
+#page-title {
+	background-color: aqua;
+	font-size: 70px;
+	font-family: Arial;
+}
+
+
+@media (prefers-color-scheme: dark) {
+	body {
+
+		background-color: #333333;
+		color: #ffffff;
+		/* Color for text in dark mode */
+	}
+}

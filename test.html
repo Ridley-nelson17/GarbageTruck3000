@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="language" content="en-US">
+
+	<title id="title">Digital Journal</title>
+	<meta name="application-name" content="Digital Journal" />
+	<meta name="description" content="This is a description of my website.">
+	<meta name="author" content="Ridley">
+	<meta name="designer" content="Ridley">
+	<meta name="owner" content="GitHub, Inc under Microsoft Corperation">
+	<meta name="keywords" content="seunghwan">
+	<meta name="revised" content="Tuesday, June 7th, 2022">
+	<meta name="copyright" content="GitHub, Inc under Microsoft Corperation 2017 - 2023">
+
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#e73e0a">
+	<meta name="color-scheme" content="light dark">
+	<meta name="robots" content="noindex">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<meta http-equiv="Access-Control-Allow-Origin" content="https://ifconfig.co">
+	<meta http-equiv="Access-Control-Allow-Methods" content="GET SET">
+
+	<meta name="audience" content="all">
+	<meta name="target" content="all">
+	<meta name="distribution" content="Global">
+	<meta name="coverage" content="Worldwide">
+
+	<link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+	<div id="body-wrapper">
+		<div id="main-wrapper">
+			<main id="main">
+				<p id="page-title">친근한 패션</p>
+
+				<button class="chingus">Serach via List</button>
+				<button class="chingli">button</button>
+			</main>
+		</div>
+
+		<footer id="footer">
+			© LanyxSoft 2019-2022 All Rights Reserved
+			This website and it's contents have a seperate MIT licence under Github, Inc for publications.
+		</footer>
+	</div>
+</body>
+
+<script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+	import { getDatabase, ref, child, get, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+  
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+	  apiKey: "AIzaSyCNKu--UndJclTMr13modN3gTSv_edHm2M",
+	  authDomain: "lios-timevault.firebaseapp.com",
+	  databaseURL: "https://lios-timevault-default-rtdb.firebaseio.com",
+	  projectId: "lios-timevault",
+	  storageBucket: "lios-timevault.appspot.com",
+	  messagingSenderId: "511080657319",
+	  appId: "1:511080657319:web:65f80f7d1303b397e1c682",
+	  measurementId: "G-SLWH6BBLQ9"
+	};
+  
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+	const database = getDatabase(app);
+	
+	function writeUserData() {
+		set(ref(database, 'audit/' + userId), {
+			device: document,
+			location: contact,
+			time: password
+		});
+	}
+	// writeUserData();
+
+	function httpGet(theUrl)
+	{
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open( "GET", theUrl ); // false for synchronous request
+		xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*")
+		xmlHttp.send( "0" );
+		return xmlHttp.responseText;
+	}
+	window.alert(httpGet("https://ifcofig.co"));
+
+
+	const dbRef = ref(database);
+	get(child(dbRef, `users`)).then((snapshot) => {
+		if (snapshot.exists()) {
+			snapshot.forEach(function(val) {
+				console.log(val.key);
+				console.log(val.val()["full_name"])
+			});
+		} else {
+			console.log("No data available");
+		}
+		}).catch((error) => {
+		console.error(error);
+	});
+  </script>
+<script src="test.js" type="script/javascript"></script>
+</html>
