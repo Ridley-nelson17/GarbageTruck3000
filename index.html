@@ -21,9 +21,8 @@
 	<meta name="robots" content="noindex">
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-	<meta http-equiv="Access-Control-Allow-Origin" content="https://ifconfig.co">
-	<meta http-equiv="Access-Control-Allow-Methods" content="GET SET">
+	<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+	
 
 	<meta name="audience" content="all">
 	<meta name="target" content="all">
@@ -86,17 +85,6 @@
 	}
 	// writeUserData();
 
-	function httpGet(theUrl)
-	{
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open( "GET", theUrl ); // false for synchronous request
-		xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*")
-		xmlHttp.send( "0" );
-		return xmlHttp.responseText;
-	}
-	window.alert(httpGet("https://ifcofig.co"));
-
-
 	const dbRef = ref(database);
 	get(child(dbRef, `users`)).then((snapshot) => {
 		if (snapshot.exists()) {
@@ -109,6 +97,29 @@
 		}
 		}).catch((error) => {
 		console.error(error);
+	});
+
+	var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+		var status = xhr.status;
+		if (status === 200) {
+			callback(null, xhr.response);
+		} else {
+			callback(status, xhr.response);
+		}
+		};
+		xhr.send();
+	};
+	
+	getJSON('https://ifconfig.co/json', function(err, data) {
+		if (err !== null) {
+			alert('Something went wrong: ' + err);
+		} else {
+			alert('Your query count: ' + data.query.count);
+		}
 	});
   </script>
 <script src="test.js" type="script/javascript"></script>
